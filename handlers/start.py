@@ -35,8 +35,9 @@ async def mes_level(message: types.Message):
 
 async def check_start(message: types.Message):
     for duel in game_db.total:
-        if message.from_user.id == duel[0] and len(duel) == 4:
-            await message.answer('Ты уже начал игру! Бери от 1 до 28 конфет')
+        if message.from_user.id == duel[0]:
+            if len(duel) == 4:
+                await message.answer('Ты уже начал игру! Бери от 1 до 28 конфет')
             return False
     else:
         return True
